@@ -14,7 +14,7 @@ int main()
 	}
 	
 	vector<int> b(a);
-	
+	sort(b.begin(),b.end());
 	int mid=n-(n/2);
 	
 	a.clear();
