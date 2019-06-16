@@ -12,7 +12,7 @@ typedef struct tree
 
 node* LCA(node* head,int n1,int n2)
 {
-	if(n1<=head->val && n2>=head->val) return head;
+	if((n1<=head->val && n2>=head->val)||(n2<=head->val && n1>=head->val)) return head;
 	else if(n2<=head->val) LCA(head->left,n1,n2);
 	else
 	  if(n1>=head->val) return LCA(head->right,n1,n2);
@@ -72,7 +72,7 @@ int max(int a,int b)
 
 int height(node *rt)
 {
-   if(rt==NULL) return 0;
+   if(rt==NULL||(rt->left==NULL && rt->right==NULL)) return 0;
    else
    {
       return max(height(rt->left),height(rt->right))+1;
@@ -81,14 +81,14 @@ int height(node *rt)
 
 int heightNode(node *rt,int key)
 {
-  if(rt==NULL) return 0;
+  if(rt==NULL||(rt->left==NULL && rt->right==NULL)) return 0;
   if(rt->val==key) return height(rt);
   return max(heightNode(rt->left,key),heightNode(rt->right,key));
 }
 
 int depthNode(node *rt,int key,int depth)
 {
-  if(rt==NULL) return 0;
+  if(rt==NULL||(rt->left==NULL && rt->right==NULL)) return depth;
   if(rt->val==key) return depth;
   return max(depthNode(rt->left,key,depth+1),depthNode(rt->right,key,depth+1));
 }
@@ -99,7 +99,7 @@ int main()
    
    insert(&root,1);
    insert(&root,5);
-   insert(&root,2);
+   insert(&root,4);
    insert(&root,8);
    insert(&root,0);
    
@@ -115,7 +115,7 @@ int main()
    cout<<LCA(root,2,8)->val;
    printf("\nleast common ancestor 0 and 8 :");
    cout<<LCA(root,0,8)->val;
-   printf("\nleast common ancestor 5 and 1 :");
+   printf("\nleast common ancestor 5 and 8 :");
    cout<<LCA(root,5,1)->val;
    
    return 0;

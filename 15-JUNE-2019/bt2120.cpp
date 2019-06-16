@@ -114,26 +114,6 @@ node* find(node* head,int n1,vector<node*> &p1)
 
 }
 
-node* find2(node* head,int n1,int n2,vector<node*> &p1)
-{
-   if(head==NULL) 
-      return NULL;
-   
-   if(head->val==n1)
-   {
-     p1.insert(p1.begin()+0,head); return head;
-   }
-
-   find2(head->left,n1,n2,p1,p2);
-   find2(head->right,n1,n2,p1,p2);
-   
-   if(temp!=NULL || temp2!=NULL)
-   {
-     p1.insert(p1.begin()+0,head);
-     return head;
-  }
-  return NULL;
-}
  
     
 
@@ -194,10 +174,7 @@ int main()
      cout<<"ancestor of "<<n1<<" "<<n2<<" : "<<p1[i-1]->val<<endl;
 
    }
-  p1.clear();
-  p2.clear();
-  cin>>n1>>n2;
-  find2(root,int n1,int n2,vector<node*>  &p1,vector<node*> &p2);
+
 
 
 
