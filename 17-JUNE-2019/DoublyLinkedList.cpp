@@ -7,6 +7,7 @@ typedef struct node{
  struct node *next,*prev;
 }node;
 
+
 node* insertf(node *head,int key)
 {
       node* temp;
